@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventSheets layout="onefloor" previous="" next="" version="2.2">
+  <item type="instance" UID="3814"/>
+  <item type="instance" UID="3810"/>
+  <item type="instance" UID="3807"/>
+  <item type="instance" UID="3804"/>
+  <item type="instance" UID="3801">
+    <item initValue="10" variableType="number" variableName="hp" type="variable"/>
+    <item initValue="5" variableType="number" variableName="ap" type="variable"/>
+    <item type="behavior" behaviorType="SolidBehaivor" name="刚体"/>
+  </item>
+  <item type="instance" UID="3798">
+    <item initValue="100" variableType="number" variableName="hp" type="variable"/>
+    <item initValue="5" variableType="number" variableName="ap" type="variable"/>
+    <item type="behavior" behaviorType="EightDirectionBehaivor" name="八向运动">
+      <item valueDataType="number" value="100" name="maxSpeed"/>
+      <item valueDataType="number" value="600" name="acceleration"/>
+      <item valueDataType="number" value="500" name="deceleration"/>
+      <item valueDataType="number" value="2" name="directions"/>
+      <item valueDataType="number" value="0" name="angleMode"/>
+      <item valueDataType="number" value="1" name="defaultControls"/>
+      <item valueDataType="number" value="1" name="enabled"/>
+    </item>
+  </item>
+  <item type="instance" UID="3795"/>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnSceneInitCompleteEvent" callName="onSceneInitComplete" isTrigger="true" target="System"/>
+    <item type="action" persistent="false" callTarget="instance" callName="stop" target="hero"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setBitmapText" target="攻击值">
+      <item valueDataType="string" value="hero.ap" name="2"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setBitmapText" target="生命值">
+      <item valueDataType="string" value="hero.hp" name="2"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnKeyDownEvent" callName="onkeyDown" isTrigger="true" target="Keyboard">
+      <item valueDataType="number" value="38" name="key"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAction" target="hero">
+      <item valueDataType="number" value="2" name="frameType"/>
+      <item valueDataType="string" value="%22goup%22" name="action"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnKeyDownEvent" callName="onkeyDown" isTrigger="true" target="Keyboard">
+      <item valueDataType="number" value="40" name="key"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAction" target="hero">
+      <item valueDataType="number" value="2" name="frameType"/>
+      <item valueDataType="string" value="%22godown%22" name="action"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnKeyDownEvent" callName="onkeyDown" isTrigger="true" target="Keyboard">
+      <item valueDataType="number" value="37" name="key"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAction" target="hero">
+      <item valueDataType="number" value="2" name="frameType"/>
+      <item valueDataType="string" value="%22goleft%22" name="action"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnKeyDownEvent" callName="onkeyDown" isTrigger="true" target="Keyboard">
+      <item valueDataType="number" value="39" name="key"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAction" target="hero">
+      <item valueDataType="number" value="2" name="frameType"/>
+      <item valueDataType="string" value="%22goright%22" name="action"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnAnyKeyReleasedEvent" callName="onAnykeyReleased" isTrigger="true" target="Keyboard"/>
+    <item type="action" persistent="false" callTarget="instance" callName="stop" target="hero"/>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="hero">
+      <item valueDataType="string" value="骷髅lv1" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="骷髅lv1"/>
+  </item>
+</eventSheets>
